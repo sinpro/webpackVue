@@ -2,8 +2,6 @@ var path = require('path');
 var config = require('../config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var glob = require('glob');
-
-
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production' ?
     config.build.assetsSubDirectory :
@@ -11,10 +9,8 @@ exports.assetsPath = function (_path) {
 
   return path.posix.join(assetsSubDirectory, _path)
 }
-
 exports.cssLoaders = function (options) {
   options = options || {}
-
   var cssLoader = {
     loader: 'css-loader',
     options: {
@@ -23,7 +19,6 @@ exports.cssLoaders = function (options) {
       importLoaders: 1
     }
   }
-
   // generate loader string to be used with extract text plugin
   function generateLoaders(loader, loaderOptions) {
     var loaders = [cssLoader]
@@ -35,7 +30,6 @@ exports.cssLoaders = function (options) {
         })
       })
     }
-
     if (options.extract) {
       let extractLoader = {
           loader: MiniCssExtractPlugin.loader,
@@ -46,7 +40,6 @@ exports.cssLoaders = function (options) {
         return ['vue-style-loader', 'css-loader'].concat(['postcss-loader'], loaders)
     }
   }
-
   // http://vuejs.github.io/vue-loader/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
@@ -60,7 +53,6 @@ exports.cssLoaders = function (options) {
     styl: generateLoaders('stylus')
   }
 }
-
 // Generate loaders for standalone style files (outside of .vue)
 exports.styleLoaders = function (options) {
   var output = []
@@ -74,8 +66,6 @@ exports.styleLoaders = function (options) {
   }
   return output
 }
-
-
 //获取入口文件
 exports.getMultiEntry = function (globPath) {
   const entries = {};
@@ -88,9 +78,8 @@ exports.getMultiEntry = function (globPath) {
   });
   return entries;
 }
-
-var fs = require('fs'), copyStat = fs.stat;
-
+var fs = require('fs'), 
+  copyStat = fs.stat;
 /*
  * 复制目录中的所有文件包括子目录
  * @param{ String } 需要复制的目录
@@ -127,7 +116,6 @@ var filecopy = function (src, dst) {
     });
   });
 };
-
 //在复制目录前需要判断该目录是否存在，不存在需要先创建目录
 exports.startCopy = function (src, dst) {
   fs.exists(dst, function (exists) {

@@ -1,4 +1,5 @@
 // 打包公共组件 让别的项目以script+cdn形式引入
+'use strict';
 const path = require('path');
 const vueLoaderPlugin = require('vue-loader/lib/plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');

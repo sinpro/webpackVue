@@ -3,23 +3,38 @@
   "version": "1.0.0",
   "description": "a vue project of webpack@4.0+",
   "scripts": {
-    "dev": "node ./build/dev-server",
-    "build:fat": "webpack --config ./build/webpack.fat.conf.js --progress --mode production",
-    "build:uat": "webpack --config ./build/webpack.uat.conf.js --progress --mode production",
-    "build": "webpack --config ./build/webpack.prod.conf.js --progress --mode production",
-    "watch": "webpack --config ./build/webpack.prod.conf.js --mode production --hide-modules",
-    "test": "jest"
+    "dev": "cross-env NODE_ENV=development node ./build/dev-server",
+    "build:fat": "cross-env NODE_ENV=production NODE_MODE=fat npm run build:dist",
+    "build:uat": "cross-env NODE_ENV=production NODE_MODE=uat npm run build:dist",
+    "build": "cross-env NODE_ENV=production NODE_MODE=prod npm run build:dist",
+    "build:demo": "cross-env NODE_ENV=demo NODE_MODE=demo npm run build:dist",
+    "build:watch": "cross-env NODE_ENV=production NODE_MODE=prod NODE_TYPE=watch npm run build:dist",
+    "build:dist": "webpack --config ./build/webpack.build.dist.js --progress --mode production",
+    "build:dll": "webpack --config ./build/webpack.build.dll.js",
+    "build:ShareComponents": "webpack --config ./build/webpack.lib.conf.js",
+    "lint-staged": "lint-staged",
+    "lint": "npm run lint:js-vue",
+    "lint-staged:js-vue": "eslint --ext .js,.vue",
+    "lint:fix": "eslint --fix --cache --ext .js,.vue ./src",
+    "lint:js-vue": "eslint --cache --ext .js,.vue ./src"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/register": "^7.13.16",
+    "@babel/runtime-corejs3": "^7.21.0",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "add-asset-html-webpack-plugin": "^3.2.0",
     "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "cache-loader": "^4.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.3",
     "ejs-loader": "^0.3.6",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -30,11 +45,12 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "html-webpack-plugin": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.3",
+    "thread-loader": "^3.0.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-loader": "^15.9.1",
     "vue-template-compiler": "^2.6.11",
@@ -46,7 +62,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "antd": "^4.2.2",
+    "element-ui": "^2.15.13",
     "mockjs": "^1.1.0",
     "vue": "^2.6.11"
   },
@@ -57,12 +73,13 @@
   "keywords": [
     "vue",
     "webpack",
-    "antd"
+    "element-ui"
   ],
   "jest": {
     "moduleFileExtensions": [
       "js",
-      "vue"
+      "vue",
+      "element-ui"
     ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
