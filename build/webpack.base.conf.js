@@ -13,8 +13,7 @@ function resolve(dir) {
 }
 module.exports = {
   entry: {
-    // index: ["babel-polyfill",`${srcPath}/main.js`]  // 主模块
-    index: `${srcPath}/main.js`, // 主模块
+    index: ["babel-polyfill",`${srcPath}/main.js`]  // 主模块
   },
   output: {
     path: rootPath,
@@ -56,6 +55,7 @@ module.exports = {
           loader: "url-loader",
           options: {
             limit: limit,
+            esModule:false,
             name: `${assets}/images/[name].[ext]?v=[hash:${hashLen}]`,
           },
         },

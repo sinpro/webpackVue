@@ -37,6 +37,7 @@ module.exports = merge(bundleAnalyzerPlugin, {
           loader : 'url-loader',
           options: {
             limit: limit,
+            esModule:false,
             name : `[name].[ext]?v=[hash:${hashLen}]`
           }
         }

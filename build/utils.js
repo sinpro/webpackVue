@@ -19,9 +19,23 @@ exports.cssLoaders = function (options) {
       importLoaders: 1
     }
   }
+  const px2remLoader = {				// 添加的代码
+    loader: 'px2rem-loader',
+    options: {
+      remUnit: 192 //根据视觉稿，rem为px的十分之一，移动端使用750/10为75，PC端使用1920/10为192
+    }
+  }
+
+  const postcssLoader = {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: options.sourceMap
+    }
+  }
   // generate loader string to be used with extract text plugin
   function generateLoaders(loader, loaderOptions) {
-    var loaders = [cssLoader]
+    // var loaders = [cssLoader,px2remLoader]
+    const loaders = options.usePostCSS ? [cssLoader, postcssLoader, px2remLoader] : [cssLoader, px2remLoader]
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
