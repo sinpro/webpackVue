@@ -6,7 +6,10 @@ import MyPromise from 'promise';// 兼容ie10，promise resolve之后 then不执
 console.log(ENV_CONFIG,'ENV_CONFIG')
 const isDev = process.env.NODE_ENV;
 let ajaxCounter = 0;
-let noRepeatLoading = false;
+function rqs(data) {
+  return JSON.stringify(data);
+}
+
 // 获取vue链
 const $$context = Vue.prototype;
 

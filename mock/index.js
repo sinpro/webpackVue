@@ -4,6 +4,25 @@ import common from './common'; // 公共mock数据
 const mocks=[
   ...common, 
 ]
+// const mocks = {
+//         intercept: true, // 开关，来使模拟请求与真实请求并存
+//         fetchs: common
+// }
+export function param2Obj(url) {
+    const search = url.split('?')[1]
+    if (!search) {
+        return {}
+    }
+    return JSON.parse(
+        '{"' +
+            decodeURIComponent(search)
+            .replace(/"/g, '\\"')
+            .replace(/&/g, '","')
+            .replace(/=/g, '":"')
+            .replace(/\+/g, ' ') +
+          '"}'
+        ) 
+    }
 export function mockXHR(){
     Mock.XHR.prototype.proxy_send=Mock.XHR.prototype.send;
     Mock.XHR.prototype.send=function(){
@@ -22,7 +41,8 @@ export function mockXHR(){
                 const { body, type, url}=options;
                 result=respond({
                     method:type,
-                    body: typeof body ==='string'?JSON.parse(body):body
+                    body: typeof body ==='string'?JSON.parse(body):body,
+                    query: param2Obj(url)
                 })
             }else{
                 result=respond
@@ -33,6 +53,13 @@ export function mockXHR(){
     for (const i of mocks) {
         Mock.mock(i.url,i.type||'get',XHR2ExpressReqWrap(i.response))
     }
+    // for (const i of mocks) {
+    //     if(i.intercept){
+    //       for(const fetch of i.fetchs){
+    //         Mock.mock(new RegExp(fetch.url), fetch.type || 'get', XHR2ExpressReqWrap(fetch.response))
+    //       }
+    //     }
+    //   }
 }
   
 export default mocks;
