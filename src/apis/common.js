@@ -1,4 +1,4 @@
-import ajax from 'utils/ajax';
+import ajax from 'utils/request';
 
 //【雷浩】客户信息查询
 export const CBBC050060 = data => {

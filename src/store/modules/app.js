@@ -3,8 +3,8 @@
 export default {
   // namespaced: true, // 模块化局部命名
   state: {
-    loading: true,//是否需要loading
-    maskLayer: true,//是否需要遮罩层
+    loading: false,//是否需要loading
+    maskLayer: false,//是否需要遮罩层
     
   },
   mutations: {

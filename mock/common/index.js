@@ -8,7 +8,8 @@ export default [
       response: function (config) {
         return createReturnData(
           Mock.mock({
-            onkgryCd: "1"
+            name: "ddd",
+            age:'23'
           })
         );
       }
