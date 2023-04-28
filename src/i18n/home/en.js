@@ -4,6 +4,6 @@ export default {
         age:'age'
     },
     'ege':{
-        
+        size:'26'
     }
 }
