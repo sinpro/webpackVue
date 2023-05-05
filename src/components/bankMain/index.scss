@@ -13,8 +13,9 @@
         background-color: antiquewhite;
         margin-left: 120px;
         height: 100%;
+        overflow: auto;
         .cont{
-            overflow: auto;
+            padding: 12px;
         }
     }
 }

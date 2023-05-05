@@ -7,10 +7,9 @@ import store from './store';
 import 'lib-flexible';
 
 import './style/index.scss';
-
-import 'element-ui/lib/theme-chalk/index.css';
 import ElementUI from 'element-ui';
 Vue.use(ElementUI,{zIndex:30000});
+import 'element-ui/lib/theme-chalk/index.css';
 // 获取mac地址
 for(let i in osMac){
 	for(let j in osMac[i]){

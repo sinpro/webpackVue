@@ -131,8 +131,8 @@
       </el-form>
     </div>
     <div class="wrap_btn">
-      <div class="btn">重设</div>
-      <div class="btn btn_ok">下一步</div>
+      <el-button>重设</el-button>
+      <el-button>下一步</el-button>
     </div>
   </div>
 </template>
@@ -182,8 +182,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrap {
-  padding: 20px;
-  font-size: 13px;
+  
   .title {
     border-left: 2px solid #cbcaca;
     padding-left: 6px;
