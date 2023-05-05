@@ -1,4 +1,5 @@
 import home from './home'; // 首页
+import demo from './demo'; // 首页
 // 不需要动态判断权限
 const constantRoutes = [
     {
@@ -21,6 +22,7 @@ const constantRoutes = [
 // 需求动态判断权限并通过addRoutes 动态添加的页面
 const asyncRoutes = [
     ...home,
+    ...demo,
     {
         path: '/layout',
         name: 'layout',

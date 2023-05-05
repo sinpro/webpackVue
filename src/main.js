@@ -3,11 +3,15 @@ import App from './app.vue';
 import i18n from './i18n';
 import router from './router';
 import store from './store';
+
 import 'lib-flexible';
 
 import './style/index.scss';
 
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 
+Vue.use(ElementUI)
 // 获取mac地址
 for(let i in osMac){
 	for(let j in osMac[i]){
