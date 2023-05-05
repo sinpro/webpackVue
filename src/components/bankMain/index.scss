@@ -1,17 +1,18 @@
 .bank-main{
     // background-color: #b5b087;
-    height: calc(100vh - 146px);
+    height: calc(100vh - 218px);
     padding: 0 24px;
     position: relative;
+    margin: 24px 0;
     &-silder{
         float: left;
-        width: 120px;
+        width: 180px;
         height: 100%;
-        background-color: aquamarine;
+        background-color: #fff;
     }
     &-content{
-        background-color: antiquewhite;
-        margin-left: 120px;
+        background-color: #fff;
+        margin-left: 204px;
         height: 100%;
         overflow: auto;
         .cont{

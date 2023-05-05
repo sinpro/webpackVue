@@ -16,6 +16,7 @@ const i18n = new VueI18n({
     'tc':tc,
     'en':en
   },
+  silentTranslationWarn: true
 });
 
 locale.i18n((key, value) => i18n.t(key, value))
