@@ -11,6 +11,7 @@
             collapse-tags
           >
           </el-input>
+          <span style="color: blue">账户查询</span>
         </el-form-item>
         <el-form-item label="*账户名称：" class="hht-rural-frist">
           <el-input
@@ -25,8 +26,8 @@
     </div>
     <div class="wrap_payeeBox">
       <div class="title">收款人资料</div>
-      <el-form label-position="right"  :model="formData">
-        <el-form-item  label="*收款人类型：" class="hht-rural-frist">
+      <el-form label-position="right" :model="formData">
+        <el-form-item label="*收款人类型：" class="hht-rural-frist">
           <el-select
             placeholder="请选择"
             class="hht-input"
@@ -39,6 +40,7 @@
               :value="item.value"
             ></el-option>
           </el-select>
+          <span style="color: blue" @click="open">已登记第三者账户</span>
         </el-form-item>
         <el-form-item label="*收款人识别方式：" class="hht-rural-frist">
           <el-select
@@ -68,7 +70,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item  label="*收款人户名：" class="hht-rural-frist">
+        <el-form-item label="*收款人户名：" class="hht-rural-frist">
           <el-input
             placeholder="请输入"
             class="hht-input"
@@ -113,6 +115,7 @@
             v-model="formData.payeeMoneyNum"
           >
           </el-input>
+          <span>HKD</span>
         </el-form-item>
         <el-form-item label="*附言：" class="hht-rural-frist">
           <el-select
@@ -131,8 +134,8 @@
       </el-form>
     </div>
     <div class="wrap_btn">
-      <div class="btn">重设</div>
-      <div class="btn btn_ok">下一步</div>
+      <div class="btn" @click="recover">重设</div>
+      <div class="btn btn_ok" @click="goComfirm">下一步</div>
     </div>
   </div>
 </template>
@@ -153,6 +156,7 @@ export default {
         payeeMoneyNum: '',
         payeeContent: ''
       },
+
       options: [
         {
           value: '选项1',
@@ -176,6 +180,45 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    goComfirm() {
+      this.$router.push({
+        path: `detail`
+      });
+    },
+    recover(){
+      this.formData= {
+        payerNum: '',
+        payerName: '',
+        payeeType: '',
+        payeeWay: '',
+        payeeNum: '',
+        payeeName: '',
+        payeeBank: '',
+        payeeMoneyTy: '',
+        payeeMoneyNum: '',
+        payeeContent: ''
+      }
+    },
+    open() {
+        this.$prompt('请输入邮箱', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+          inputErrorMessage: '邮箱格式不正确'
+        }).then(({ value }) => {
+          this.$message({
+            type: 'success',
+            message: '你的邮箱是: ' + value
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });       
+        });
+      }
   }
 };
 </script>
