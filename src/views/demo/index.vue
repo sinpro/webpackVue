@@ -134,8 +134,13 @@
       </el-form>
     </div>
     <div class="wrap_btn">
+<<<<<<< HEAD
       <div class="btn" @click="recover">重设</div>
       <div class="btn btn_ok" @click="goComfirm">下一步</div>
+=======
+      <el-button>重设</el-button>
+      <el-button>下一步</el-button>
+>>>>>>> 6bbf52e8d657d20e182528cad28c6f35bba1a468
     </div>
   </div>
 </template>
@@ -225,8 +230,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrap {
-  padding: 20px;
-  font-size: 13px;
+  
   .title {
     border-left: 2px solid #cbcaca;
     padding-left: 6px;

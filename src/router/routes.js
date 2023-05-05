@@ -22,7 +22,6 @@ const constantRoutes = [
 // 需求动态判断权限并通过addRoutes 动态添加的页面
 const asyncRoutes = [
     ...home,
-    ...demo,
     {
         path: '/layout',
         name: 'layout',
@@ -32,9 +31,9 @@ const asyncRoutes = [
             () => resolve(require('src/components/bankLayout')),
             'BankLayout'
           ),
-        // children:[
-        //     
-        // ]
+        children:[
+          ...demo,
+        ]
     }
 ]
 const routes = [...constantRoutes, ...asyncRoutes];
