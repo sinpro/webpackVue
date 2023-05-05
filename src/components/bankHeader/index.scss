@@ -1,15 +1,26 @@
-.wrap{
-    .wrap-cont{
-        height: 180px;
-        width: 100%;
-        background-color: pink;
-        font-size: 12px;
-    
-        .cont{
-            height: 100px;
-            width: 100px;
-            background-color: orchid;
-            color: rgb(253, 253, 253);
+.bank-header{
+    height: 90px;
+    background-color: pink;
+    padding: 0 24px;
+    .log{
+        // background-color: cyan;
+    }
+    .nav{
+        // background-color: rgb(99, 224, 26);
+    }
+    &-logo{
+        width: 100px;
+        height: 40px;
+        background-color: brown;
+        margin-top: 20px;
+        float: left;
+    }
+    &-search{
+        float: right;
+        margin-top: 25px;
+        >div,button{
+            float: left;
+            margin-right: 15px;
         }
     }
     

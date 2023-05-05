@@ -6,7 +6,8 @@ import store from './store';
 import 'lib-flexible';
 
 import './style/index.scss';
-
+import ElementUI from 'element-ui';
+Vue.use(ElementUI,{zIndex:30000});
 
 // 获取mac地址
 for(let i in osMac){
@@ -17,18 +18,6 @@ for(let i in osMac){
 	}
 }
 console.log(osMac,Vue.prototype.$macIP,'mac')
-
-
-
-
-// var npm = require('getmac');//获取mac地址
-  
-//  //获取机器mac地址
-//  npm.getMac(function(err,macAddress){
-//      if (err)  throw err;
-//      var mac = macAddress; //获取mac地址
-//      console.log(mac,'macmac');     
-//  });
 
 const root = document.createElement('div');
 document.body.appendChild(root);

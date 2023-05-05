@@ -1,11 +1,14 @@
 <template>
-	<div class="bank_footer">
-		<div>脚注</div>
+	<div class="breadCrumb">
+        面包屑
 	</div>
 </template>
 <script>
 export default {
-  name:'BankFooter',
+  name:'BreadCrumb',
+  components: {
+	
+  },
 	data(){
 		return {
 			
@@ -17,5 +20,8 @@ export default {
 }	
 </script>
 <style lang="scss" scoped>
-@import './index.scss';
+.breadCrumb{
+    background: #d9c0c0;
+    padding: 8px 10px;
+}
 </style>

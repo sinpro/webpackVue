@@ -1,13 +1,13 @@
 <template>
-    <div class="wrap">
+    <div class="bank-layout">
       <!--头部-->
-    <bankHeader></bankHeader>
-    <!--内容-->
-    <bankMain class="bankMain" id="bankMain"></bankMain>
-    <!--脚注-->
-    <bankFooter></bankFooter>
-    <!-- loading -->
-    <bankLoading></bankLoading>
+      <bankHeader></bankHeader>
+      <!--内容-->
+      <bankMain class="bankMain" id="bankMain"></bankMain>
+      <!--脚注-->
+      <bankFooter></bankFooter>
+      <!-- loading -->
+      <bankLoading></bankLoading>
     </div>
 </template>
 <script>

@@ -1,11 +1,11 @@
 <template>
-	<div class="bank_footer">
-		<div>脚注</div>
+	<div class="slider">
+		侧边栏
 	</div>
 </template>
 <script>
 export default {
-  name:'BankFooter',
+  name:'SilderBar',
 	data(){
 		return {
 			
@@ -14,6 +14,9 @@ export default {
 	mounted(){
 		
 	},
+	methods:{
+		
+	}
 }	
 </script>
 <style lang="scss" scoped>
