@@ -1,0 +1,148 @@
+// triangle 三角箭头
+// 可采用空元素或伪元素生成，具体定位这里不涉及
+%triangle-basic {
+  position: absolute;
+  content: '';
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+@mixin triangle($direction: top, $borderWidth: 6px, $borderColor: #ccc) {
+  @extend %triangle-basic;
+  @if $direction == top {
+    border-top: $borderWidth solid $borderColor;
+    border-left: $borderWidth dashed transparent;
+    border-right: $borderWidth dashed transparent;
+  } @else if $direction == right {
+    border-right: $borderWidth solid $borderColor;
+    border-top: $borderWidth dashed transparent;
+    border-bottom: $borderWidth dashed transparent;
+  } @else if $direction == bottom {
+    border-bottom: $borderWidth solid $borderColor;
+    border-left: $borderWidth dashed transparent;
+    border-right: $borderWidth dashed transparent;
+  } @else if $direction == left {
+    border-left: $borderWidth solid $borderColor;
+    border-top: $borderWidth dashed transparent;
+    border-bottom: $borderWidth dashed transparent;
+  }
+}
+
+//设置按钮
+@mixin btn($fontSize: 16px, $color: #fff, $bgColor: #ec5845) {
+  position: relative;
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  font-size: $fontSize;
+  text-align: center;
+  line-height: 2.33333333;
+  border-radius: 5px;
+  overflow: hidden;
+  color: $color;
+  background: #ec5845;
+}
+//单行隐藏
+@mixin ell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+// transition
+@mixin tran {
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -ms-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+@mixin flex {
+  display: -webkit-box; //旧语法
+  display: -webkit-flex; //新语法
+  display: flex;
+  flex-direction: row;
+}
+@mixin bg {
+  background: rgba(0, 0, 0, 0.3);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#30000000',endColorstr='#30000000')\9;
+}
+
+// spacing
+$spacing-types: (
+   m: margin,
+   p: padding
+);
+$spacing-directions: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+$spacing-base-size: 1rem;
+$spacing-sizes: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 1.5,
+  5: 3,
+);
+@each $typeKey, $type in $spacing-types {
+  @each $sizeKey, $size in $spacing-sizes {
+    // m-1
+    .#{$typeKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size;
+    }
+    // mx-1
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size;
+      #{$type}-right: $size * $spacing-base-size;
+    }
+    // my-1
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size;
+      #{$type}-bottom: $size * $spacing-base-size;
+    }
+  }
+  // mx-1
+  @each $directionKey, $direction in $spacing-directions {
+    @each $sizeKey, $size in $spacing-sizes {
+      .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+        #{$type}-#{$direction}: $size * $spacing-base-size;
+      }
+    }
+  }
+}
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  // width: .1rem;
+  // height: .1rem;
+  height: 6px;
+  width: 6px;
+  background: #fff;
+  display: block;
+  // display: none;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+  background-color: rgba(50, 50, 50, 0.1);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  // border-radius: .05rem;
+  background: #ccc;
+}
+
+.fadeIn-enter {
+  opacity: 0;
+}
+.fadeIn-enter-active {
+  transition: all 0.3s linear;
+}
+.fadeIn-leave-active {
+  transition: all 0.3s linear;
+  opacity: 0;
+}

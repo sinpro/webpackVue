@@ -1,51 +1,24 @@
+/* eslint-disable */
 const vueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
-const path = require('path');
+const path = require('path')
 const merge = require('webpack-merge');
+const utils = require('./utils');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const InsertHtmlSiteConfigPlugin = require('./webpack.config.plugin');
 
-const utils = require('./utils');
+const envConfig = require('../config/envConfig');
 const baseConfig = require('./webpack.base.conf');
-const {srcPath,assets,postcssLoaderOptions,bundleAnalyzer} = require('../config');
+
+const { srcPath, assets, postcssLoaderOptions } = require('../config');
 
 // add hot-reload related code to entry chunks
 Object.keys(baseConfig.entry).forEach(function (name) {
   baseConfig.entry[name] = ['webpack-hot-middleware/client'].concat(baseConfig.entry[name])
 });
 
-// let entrys = utils.getMultiEntry('./src/templates/*.ejs');
-let entrys = utils.getMultiEntry('./src/templates/dev.ejs');
-let htmlPlugins = {
-  plugins: []
-};
-
-for (let key in entrys) {
-  console.log(`${srcPath}/templates/${entrys[key]}`)
-  htmlPlugins.plugins.push(new HtmlWebpackPlugin({
-    template: `${srcPath}/templates/${entrys[key]}`,
-    // filename: `${key}.html`,
-    filename: 'index.html',
-    favicon : './src/images/favicon.ico',
-    // chunks  : ['manifest', 'vendor', 'common', key],
-    chunks  : ['manifest', 'vendor', 'common', 'index'],
-    hash    : false,
-    minify  : {
-      removeComments    : true,
-      collapseWhitespace: true
-    }
-  }));
-}
-
-if(bundleAnalyzer){
-  htmlPlugins.plugins(new BundleAnalyzerPlugin());
-}
-
-process.env.NODE_ENV='development';
-process.noDeprecation=true;
-
-module.exports = merge(baseConfig, htmlPlugins, {
+module.exports = merge(baseConfig, {
   mode: 'development',
   output : {
     filename: `${assets}/js/[name].js`
@@ -60,12 +33,13 @@ module.exports = merge(baseConfig, htmlPlugins, {
         postcssLoaderOptions,
         'sass-loader',
         {
-          loader:'sass-resources-loader',
-          options:{
-            resources:path.resolve(__dirname,'../src/style/base/mixin.scss')
+          loader: 'sass-resources-loader',
+          options: {
+            resources: path.resolve(__dirname, '../src/style/base/mixin.scss')
           }
         }
-      ]
+      ],
+      // include: paths.appSrc,
     }, {
       test: /\.css$/,
       use : [
@@ -81,6 +55,10 @@ module.exports = merge(baseConfig, htmlPlugins, {
         loaders: {
           css: [
             'vue-style-loader',
+            /* 应该不用下面几个loader，待测试 */
+            'css-loader',
+            'sass-loader',
+            postcssLoaderOptions,
           ]
         }
       }
@@ -88,13 +66,32 @@ module.exports = merge(baseConfig, htmlPlugins, {
   },
   devtool: '#cheap-module-eval-source-map',   // #eval-source-map
   plugins: [
+    new HtmlWebpackPlugin({
+      template: `${srcPath}/templates/index.ejs`,
+      //filename: `${key}.html`,
+      filename: 'index.html',
+      favicon : './src/images/favicon.ico',
+      chunks  : ['manifest', 'vendor', 'common', 'index'],
+      hash    : false,
+      minify  : {
+        removeComments    : true,
+        collapseWhitespace: true
+      }
+    }),
+    // 自定义html插件处理系统常量配置
+    new InsertHtmlSiteConfigPlugin({
+      variableKey: 'ENV_CONFIG',
+      variableValue: envConfig.dev||{}
+    }),
     new vueLoaderPlugin(),
-    // 配置环境变量 --开发环境
+    // 配置环境变量 开发环境
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV':JSON.stringify('development')
+      'isMockEnv': false,
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'osMac': JSON.stringify(require('os').networkInterfaces())
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin(),
   ]
 });

@@ -1,7 +1,7 @@
 const host={
-	sat:'http://www.baidu.com',
-	uat:'http://www.baidu.com',
-	dev:'http://www.baidu.com'
+	sat:'http://www.baidu.com.sat',
+	uat:'http://www.baidu.com.uat',
+	dev:'http://www.baidu.com.dev'
 };
 module.exports={
 	port:8823,
@@ -15,5 +15,5 @@ module.exports={
 		},
 	},
 	overLay:false,
-	autoOpenBrowser:true
+	autoOpenBrowser:false
 }

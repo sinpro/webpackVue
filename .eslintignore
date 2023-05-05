@@ -5,4 +5,4 @@ dist/*
 *.min.css
 *.min.js
 */lib/*.js
-src/*
+src

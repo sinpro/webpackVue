@@ -1,6 +1,6 @@
 let {resolve} = require('path');
 let devServer = require('./dev'); // 开发环境配置 项目开发中不提交，每个开发者的习惯可能不一样
-// const rootValue = 37.5;
+const rootValue = 37.5;
 const env=process.argv[process.argv.length-1];
 module.exports = {
   assets              : 'assets', // 打包后静态资源子目录
@@ -14,8 +14,16 @@ module.exports = {
   limit               : 1024 * 5, // url-loader limit参数
   devServer           : devServer,
   bundleAnalyzer      : false,
-  // rootValue           : rootValue,
+  rootValue           : rootValue,
   imagesPublicPath    : '../../',
+  // dllStaticList: {  // dll处理的资源文件
+  //   vueBase: ['vue/dist/vue.esm.js', 'vue-router', 'vuex', 'axios'],
+  //   // g2Base: ['@antv/g2'],	// G2工具
+  //   // g2DataSet: ['@antv/data-set'], // G2dataset工具
+  //   uiBase:['element-ui','echarts'],
+  //   // echarts: ['echarts'], // echarts
+  //   // moment: ['moment'], // moment
+  // },
   postcssLoaderOptions: {
     loader : 'postcss-loader',
     options: {
