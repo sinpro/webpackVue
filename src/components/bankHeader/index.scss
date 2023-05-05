@@ -1,0 +1,16 @@
+.wrap{
+    .wrap-cont{
+        height: 180px;
+        width: 100%;
+        background-color: pink;
+        font-size: 12px;
+    
+        .cont{
+            height: 100px;
+            width: 100px;
+            background-color: orchid;
+            color: rgb(253, 253, 253);
+        }
+    }
+    
+}
