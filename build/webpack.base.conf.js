@@ -13,7 +13,7 @@ function resolve(dir) {
 }
 module.exports = {
   entry: {
-    index: ['babel-polyfill', `${srcPath}/main.js`] // 主模块
+    index: [`${srcPath}/main.js`] // 主模块
   },
   output: {
     path: rootPath,
