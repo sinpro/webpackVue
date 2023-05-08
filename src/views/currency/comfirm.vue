@@ -1,50 +1,56 @@
 <template>
   <div class="wrap">
     <div class="wrap_box">
-      <div class="moneyTitle">转账金额（HKD）</div>
-      <div class="moneyNum">{{ formData.payeeMoneyNum }}</div>
+      <div class="moneyTitle">买入金额（瑞士法郎）</div>
+      <div class="moneyNum">50.00</div>
+      <!-- <div class="moneyNum">{{ formData.payeeMoneyNum }}</div> -->
+      <div class="moneyNum">卖出442.55港元</div>
     </div>
     <div class="wrap_info">
       <el-form :inline="true" :model="formData" class="demo-form-inline">
         <el-row>
           <el-col :span="12">
             <div class="item">
-              <div class="title">付款账户</div>
-              <div class="text">{{ formData.payerName }}</div>
+              <div class="text">买入账号</div>
             </div>
           </el-col>
           <el-col :span="12">
             <div class="item">
-              <div class="title">账户号码</div>
-              <div class="text">{{ formData.payerNum }}</div>
-            </div>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
-            <div class="item">
-              <div class="title">收款人类型</div>
-              <div class="text">{{ formData.payeeType | filterPayeeType }}</div>
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="item">
-              <div class="title">收款户名</div>
-              <div class="text">{{ formData.payeeName }}</div>
+              <div class="text">买入账号</div>
             </div>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <div class="item">
-              <div class="title">收款人识别方式</div>
-              <div class="text">{{ formData.payeeWay | filterPayeeWay }}</div>
+              <div class="title">货币</div>
+              <div class="text">{{ formData.payerMoneyTy }}</div>
             </div>
           </el-col>
           <el-col :span="12">
             <div class="item">
-              <div class="title">收款银行</div>
-              <div class="text">{{ formData.payeeBank }}</div>
+              <div class="title">货币</div>
+              <div class="text">{{ formData.payeeMoneyTy }}</div>
+            </div>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <div class="item">
+              <div class="title">账户</div>
+              <div>
+                <div class="text">{{ formData.payerCount }}</div>
+                <div class="text">可用结余：{{ formData.payerCanUse }}</div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div class="item">
+              <div class="title">账户</div>
+              <div>
+                <div class="text">{{ formData.payeeCount }}</div>
+                <div class="text">可用结余：{{ formData.payeeCanUse }}</div>
+              </div>
             </div>
           </el-col>
         </el-row>
@@ -52,7 +58,10 @@
           <el-col :span="24">
             <div class="item">
               <div class="title">附言</div>
-              <div class="text">{{ formData.payeeContent }}</div>
+              <div style="display:flex;justify-content:space-around;">
+                <div class="text">{{ formData.payeeContent }}</div>
+                <div class="text">可用结余：{{ formData.payeeCanUse }}</div>
+              </div>
             </div>
           </el-col>
         </el-row>
@@ -71,16 +80,15 @@ export default {
   data() {
     return {
       formData: {
-        // payerNum: '567-67-0987-HDK',
-        // payerName: '67-0987-HDK-定期',
-        // payeeType: '已登记账户',
-        // payeeWay: '收款账户',
-        // payeeNum: '',
-        // payeeName: 'wenyuge',
-        // payeeBank: '建设银行',
-        // payeeMoneyTy: '',
-        // payeeMoneyNum: '800.00',
-        // payeeContent: '房租电费'
+        payeeCount: '255-20-6108889 HKD储蓄帐户',
+        payerCount: '255-20-6108889 HKD储蓄帐户',
+        payerMoneyTy: 'HDO',
+        payeeMoneyTy: 'HDK',
+        payerCanUse: '273727382.27',
+        payeeCanUse: '273727382.27',
+        payerMoneyNum: '800.00',
+        payeeMoneyNum: '800.00',
+        payeeContent: '瑞士法郎1 港元 8.85103655-8.37909845'
       },
       payeeTypeList: [],
       payeeWayList: [],
@@ -111,7 +119,7 @@ export default {
   created() {
     this.allEnumeration();
     console.log('33333', this.$route.query.formData);
-    this.formData = this.$route.query.formData;
+    // this.formData = this.$route.query.formData;
   },
   filters: {
     filterPayeeWay(item) {
@@ -171,12 +179,12 @@ export default {
       });
     },
     goComfirm() {
-      CBBC050002({formData:this.formData}).then(res => {
+      CBBC050002({ formData: this.formData }).then(res => {
         if (res.header.errorCode === '0') {
           this.$router.push({
-            path: `result`,
-            query:{
-              result:res.header.errorCode
+            path: `currencyResult`,
+            query: {
+              result: res.header.errorCode
             }
           });
         } else {
@@ -186,7 +194,7 @@ export default {
     },
     recover() {
       this.$router.push({
-        path: `demo`
+        path: `currency`
       });
     },
     open() {
@@ -236,6 +244,7 @@ export default {
     margin-top: 40px;
     display: flex;
     justify-content: center;
+    
     text-align: center;
     line-height: 28px;
     .btn {
