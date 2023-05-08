@@ -11,6 +11,96 @@
 	<!-- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalabel=0"> -->
 	<title>创新银行</title>
 </head>
+<!--[if lt IE 10]>
+<style>
+    * {padding:0;margin:0}
+    .hack-low-version {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: #82878c;
+        -ms-filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr=#82878c, endColorstr=#82878c);
+        filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr=#82878c, endColorstr=#82878c);
+    }
+
+    .site-tips-content {
+        box-sizing: content-box;
+        height: 160px;
+        width: 384px;
+        position: absolute;
+        border-radius: 4px;
+        top: 50%;
+        left: 50%;
+        margin-top: -80px;
+        margin-left: -192px;
+        background-color: white;
+        padding: 24px;
+    }
+
+    .site-tips-title{
+        display: block;
+        font-size: 16px;
+        margin-left: 9px;
+        line-height: 24px;
+        padding-left: 40px;
+        background: url("./assets/images/Loading.gif") no-repeat;
+    }
+    .hack-content {
+        margin-top: 8px;
+        margin-left: 44px;
+        font-size: 14px;
+        line-height: 22px;
+        color: #5b5b5b;
+    }
+    body>div:first-child {display: none;}
+</style>
+<script type="text/javascript">
+    /**
+     * application developed is use vue
+     * so must run in browser at gte IE10
+     */
+    (function() {
+        var ltIE10 = (function() {
+            // 获取IE浏览器版本信息
+            function getIeVersion() {
+                var IEMode = document.documentMode;
+                var rMsie  = /(msie\s|trident.*rv:)([\w.]+)/;
+                var ma = window.navigator.userAgent.toLowerCase()
+                var match  = rMsie.exec(ma);
+                try {
+                    return match[2];
+                } catch (e) {
+                    return IEMode;
+                }
+            }
+            var ieVersion = getIeVersion();
+            // 非edge和ie10以下版本
+            if(ieVersion && ieVersion !== 'edge' && +ieVersion<10) return true;
+            return false;
+        })();
+        var IEDom = [
+            '<div class="hack-low-version">',
+            '<div class="site-tips-content">',
+            '<span class="site-tips-title">尊敬的客户：</span>',
+            '<div class="hack-content">',
+            '<p>您好！</p>',
+            '<p>企业网银将全面升级，检测到您当前浏览器版本过低。请尽快升级您的浏览器至IE10以上，以便后续正常访问本网站，谢谢。</p>',
+            '</div>',
+            '</div>',
+            '</div>'
+        ];
+        window.onload = function() {
+            if (ltIE10) {
+                document.getElementById('site-tips').innerHTML = IEDom.join('');
+            }
+        }
+    })();
+
+</script>
+<![endif]-->
 <body>
 	<div id="app">
 		<div class="loading-content">
