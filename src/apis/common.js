@@ -65,3 +65,21 @@ export const CBBC050006 = data => {
       prodPreUrl: '',
     });
 }
+export const CBBC050007 = data => {
+    return ajax({
+      url: '/CBBC050007',
+      method: 'post',
+      data,
+      devPreUrl: '/api',
+      prodPreUrl: '',
+    });
+}
+export const CBBC050008 = data => {
+    return ajax({
+      url: '/CBBC050008',
+      method: 'post',
+      data,
+      devPreUrl: '/api',
+      prodPreUrl: '',
+    });
+}

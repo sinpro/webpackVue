@@ -1,0 +1,127 @@
+.wrap {
+    .title {
+      border-left: 2px solid #d8d7d7;
+      padding-left: 6px;
+    }
+    .wrap_payerBox {
+    }
+    .wrap_payeeBox {
+      margin-top: 20px;
+    }
+    .wrap_btn {
+      margin: 40px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      line-height: 28px;
+      .btn {
+        width: 130px;
+        height: 28px;
+        border: 1px solid #eee;
+        font-size: 15px;
+        border-radius: 5px;
+      }
+      .btn_ok {
+        background-color: #000;
+        color: #fff;
+        margin-left: 20px;
+      }
+    }
+    .formClass {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .signClass {
+        color: red;
+        margin-top: 12px;
+        margin-right: -34px;
+      }
+      .hht-rural-frist {
+        .hht-input {
+          width: 230px;
+          margin-left: 8px;
+        }
+        .other-input {
+          margin-left: -12px;
+        }
+        .buy-input {
+          /deep/ .el-input {
+            .el-input__inner {
+              border: none;
+              width: 77px;
+              padding: 2px;
+            }
+            .el-input__suffix {
+              .el-icon-arrow-up {
+                margin-left: -70px;
+              }
+            }
+          }
+        }
+        .query_count_col {
+          border: 1px solid #dcdfe6;
+          width: 230px;
+          margin-left: 8px;
+          line-height: 28px;
+          span {
+            padding-left: 15px;
+          }
+          .mindle_text {
+            font-weight: bold;
+            font-size: 16px;
+          }
+          .top_text {
+            color: #000;
+          }
+        }
+      }
+      .other {
+        margin-bottom: 8px;
+        /deep/.el-form-item__content {
+          margin-left: 98px;
+        }
+      }
+  
+      .botText {
+        margin-left: 80px;
+      }
+      .tip {
+        margin-top: 12px;
+      }
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      .dialog-input {
+        width: 230px;
+      }
+      .search_btn {
+        border-radius: 4px;
+        width: 65px;
+        height: 26px;
+        line-height: 26px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+    }
+    /deep/.el-dialog__wrapper {
+      .el-dialog__header {
+        background-color: rgb(197, 196, 196);
+      }
+    }
+    .comfirm_btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      div {
+        border-radius: 4px;
+        width: 150px;
+        height: 26px;
+        line-height: 26px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+    }
+  }

@@ -1,0 +1,75 @@
+.wrap {
+  padding: 20px;
+  font-size: 13px;
+  .hht-rural-frist {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 16px;
+
+    span {
+      text-align: right;
+    }
+    .hht-input {
+      width: 230px;
+      margin-left: 10px;
+    }
+  }
+  .wrap_btn {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+ 
+    text-align: center;
+    line-height: 28px;
+    .btn {
+      width: 130px;
+      height: 28px;
+      border: 1px solid #eee;
+      font-size: 15px;
+      border-radius: 5px;
+    }
+    .btn_ok {
+      background-color: #000;
+      color: #fff;
+      margin-left: 20px;
+    }
+  }
+  .wrap_box {
+    text-align: center;
+    .moneyNum {
+      font-size: 16px;
+    }
+    .sell{
+      font-weight: bold;
+    }
+  }
+  .wrap_info {
+    margin-top: 40px;
+    .item {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e7e3e3;
+      height: 60px;
+
+      .title {
+        background-color: #eee;
+        width: 130px;
+        height: 100%;
+        line-height: 60px;
+        padding-left: 12px;
+      }
+      .text {
+        padding-left: 12px;
+        .pencent {
+          text-decoration: line-through;
+          color: #e2e2e2;
+        }
+      }
+      .count_text {
+        font-weight: bold;
+        padding-left: 12px;
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ export default [
     component: resolve =>
       require.ensure(
         [],
-        () => resolve(require('views/currency/index.vue')),
+        () => resolve(require('views/currency/index/index.vue')),
       ),
     meta: {
       // title: '首页',
@@ -19,7 +19,7 @@ export default [
     component: resolve =>
       require.ensure(
         [],
-        () => resolve(require('views/currency/comfirm.vue')),
+        () => resolve(require('views/currency/comfirm/comfirm.vue')),
       ),
     meta: {
       // title: '首页',
@@ -33,7 +33,7 @@ export default [
     component: resolve =>
       require.ensure(
         [],
-        () => resolve(require('views/currency/result.vue')),
+        () => resolve(require('views/currency/result/result.vue')),
       ),
     meta: {
       // title: '首页',
