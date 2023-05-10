@@ -1,0 +1,28 @@
+.bank-header{
+    height: 120px;
+    background-color: #fff;
+    padding: 0 24px;
+    .log{
+        // background-color: cyan;
+    }
+    .nav{
+        // background-color: rgb(99, 224, 26);
+    }
+    &-logo{
+        width: 100px;
+        height: 40px;
+        background-color: brown;
+        margin-top: 20px;
+        float: left;
+    }
+    &-search{
+        float: right;
+        margin-top: 25px;
+        >div,button{
+            float: left;
+            margin-right: 15px;
+            width: 100px;
+        }
+    }
+    
+}
