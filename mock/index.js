@@ -1,8 +1,14 @@
 import Mock from 'mockjs';
 import common from './common'; // 公共mock数据
+import currency from './currency'; // 
+import demo from './demo'; // 
+import home from './home'; // 
 
 const mocks=[
   ...common, 
+  ...currency, 
+  ...demo, 
+  ...home, 
 ]
 // const mocks = {
 //         intercept: true, // 开关，来使模拟请求与真实请求并存

@@ -1,6 +1,6 @@
 import ajax from 'utils/request';
 
-//【XXX】客户信息查询
+//【雷浩】客户信息查询
 export const CBBC050060 = data => {
     return ajax({
       url: '/CBBC050060',
