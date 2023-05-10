@@ -1,14 +1,12 @@
  <template>
   <div class="wrap">
      <div class="step">
-      <el-steps :space="200" :active="3" finish-status="success">
+      <el-steps :space="200" :active="2" finish-status="success">
         <el-step title="填写信息"></el-step>
         <el-step title="确认信息"></el-step>
         <el-step title="提交结果"></el-step>
       </el-steps>
     </div>
-   <!-- ！！！！！由于面包屑布局所添加的间隔层,后面要删掉-->
-    <div style=" background-color: #eee;height:20px"></div>
     <!-- 提交结果图标和文字 -->
     <el-result :icon="icon" :title="title" subTitle="">
       <!-- 组件插槽 -->

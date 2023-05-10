@@ -1,7 +1,20 @@
 .wrap {
-  .step{
+  .step {
     display: flex;
     justify-content: center;
+    position: relative;
+     left: 6% ;
+    /deep/.el-step{  
+      // width: 600px !important;
+      .el-step__main {
+        .el-step__title {
+          font-size: 14px;
+        }
+      }
+    }
+    /deep/.el-steps--horizontal{  
+      width: 600px ;
+    }
   }
   // 对wrap_payerBox wrap_payeeBox 左边标题样式提取
   .title {
@@ -9,8 +22,12 @@
     padding-left: 6px;
   }
 
-  .wrap_payeeBox .wrap_payerBox {
-    // 对我要买入 我要卖出的展示信息内容以及步骤条起分割作用 
+  .wrap_payeeBox  {
+    // 对我要买入 我要卖出的展示信息内容起分割作用
+    margin-top: 20px;
+  }
+  .wrap_payerBox  {
+    // 对我要卖出的展示信息内容 步骤条起分割作用
     margin-top: 20px;
   }
   // 下一步按钮样式
@@ -137,6 +154,7 @@
       background-color: #000;
       color: #fff;
       text-align: center;
+      margin-left: 10px;
     }
   }
   // 账号查询弹框 修改弹框头部默认样式

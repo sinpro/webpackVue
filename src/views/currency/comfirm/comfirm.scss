@@ -1,7 +1,20 @@
 .wrap {
-  .step{
+  .step {
     display: flex;
     justify-content: center;
+    position: relative;
+     left: 6% ;
+    /deep/.el-step{  
+      // width: 600px !important;
+      .el-step__main {
+        .el-step__title {
+          font-size: 14px;
+        }
+      }
+    }
+    /deep/.el-steps--horizontal{  
+      width: 600px ;
+    }
   }
   padding: 20px;
   font-size: 13px;

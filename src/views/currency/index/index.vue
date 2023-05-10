@@ -2,14 +2,12 @@
   <div class="wrap">
     <!-- 步骤条，后续这里要弄成公共组件 -->
     <div class="step">
-      <el-steps :space="200" :active="1" finish-status="success">
+      <el-steps :space="200" :active="0" finish-status="success">
         <el-step title="填写信息"></el-step>
         <el-step title="确认信息"></el-step>
         <el-step title="提交结果"></el-step>
       </el-steps>
     </div>
-    <!-- ！！！！！由于面包屑布局所添加的间隔层,后面要删掉-->
-    <div style="background-color: #eee; height: 20px"></div>
     <!-- 我要卖出信息相关 -->
     <div class="wrap_payerBox">
       <!-- 左侧标题，后续这里要弄成公共组件 -->
@@ -248,7 +246,7 @@ export default {
         payeeMoneyNum: '',
         payerMoneyNum: '',
         payeeContent: '',
-        nowTime: '',
+        nowTime: '09/05/2023 14:45',
         oldPensent: '',
         pensent: ''
       },
@@ -269,7 +267,7 @@ export default {
   },
   created() {
     this.allEnumeration();
-     //确认页信息带回填写页
+    //确认页信息带回填写页
     if (this.$route.query.formData) {
       this.formData = this.$route.query.formData;
     }
