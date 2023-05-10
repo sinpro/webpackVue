@@ -1,0 +1,163 @@
+.wrap {
+  .step{
+    display: flex;
+    justify-content: center;
+  }
+  // 对wrap_payerBox wrap_payeeBox 左边标题样式提取
+  .title {
+    border-left: 2px solid #d8d7d7;
+    padding-left: 6px;
+  }
+
+  .wrap_payeeBox .wrap_payerBox {
+    // 对我要买入 我要卖出的展示信息内容以及步骤条起分割作用 
+    margin-top: 20px;
+  }
+  // 下一步按钮样式
+  .wrap_btn {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    line-height: 28px;
+    .btn {
+      width: 130px;
+      height: 28px;
+      border: 1px solid #eee;
+      font-size: 15px;
+      border-radius: 5px;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+  // 信息表单样式，包含我要买入，我要卖出的
+  .formClass {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    // *必输符号样式
+    .signClass {
+      color: red;
+      margin-top: 12px;
+      margin-right: -34px;
+    }
+    .form_item {
+      .hht-input {
+        width: 230px;
+        margin-left: 8px;
+      }
+      .other-input {
+        margin-left: -12px;
+      }
+      //处理买入卖出下拉切换
+      .buy-input {
+        // 减小下拉框宽度，去除边框营造label样式
+        /deep/ .el-input {
+          .el-input__inner {
+            border: none;
+            width: 77px;
+            padding: 2px;
+          }
+          .el-input__suffix {
+            .el-icon-arrow-up {
+              margin-left: -70px;
+            }
+          }
+        }
+        //修改选择框placeholder颜色
+        &::v-deep {
+          & ::placeholder {
+            color: #606266;
+          }
+        }
+      }
+      //账号三字段文本框所在行样式,营造输入框样式
+      .query_count_col {
+        display: flex;
+        align-items: center;
+        .count_col {
+          border: 1px solid #dcdfe6;
+          border-radius: 5px;
+          width: 230px;
+          margin-left: 8px;
+          /deep/.el-form-item__content {
+            line-height: 27px;
+          }
+          // 无账号文字样式
+          .default_count {
+            color: rgb(200, 204, 214);
+            padding-left: 15px;
+          }
+          // 有账号时各字段单独处理
+          span {
+            padding-left: 15px;
+          }
+          .mindle_text {
+            font-weight: bold;
+            font-size: 16px;
+          }
+          .top_text {
+            color: #000;
+          }
+        }
+        .count_query {
+          color: blue;
+          margin-left: 10px;
+        }
+      }
+    }
+    .other {
+      margin-bottom: 8px;
+      /deep/.el-form-item__content {
+        margin-left: 98px;
+      }
+    }
+    //信息输入底部说明文字样式
+    .botText {
+      margin-left: 80px;
+    }
+    .tip {
+      margin-top: 12px;
+    }
+  }
+  //账号查询弹框 搜索行样式
+  .search {
+    display: flex;
+    align-items: center;
+    // 搜索输入框样式
+    .dialog-input {
+      width: 230px;
+    }
+    // 搜索按钮样式
+    .search_btn {
+      border-radius: 4px;
+      width: 65px;
+      height: 26px;
+      line-height: 26px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+  }
+  // 账号查询弹框 修改弹框头部默认样式
+  /deep/.el-dialog__wrapper {
+    .el-dialog__header {
+      background-color: rgb(197, 196, 196);
+    }
+  }
+  // 账号查询弹框 确认按钮样式
+  .comfirm_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    div {
+      border-radius: 4px;
+      width: 150px;
+      height: 26px;
+      line-height: 26px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}

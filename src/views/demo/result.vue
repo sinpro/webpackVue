@@ -1,6 +1,6 @@
  <template>
   <div class="wrap">
-    <el-result icon="success" title="成功提示" subTitle="">
+    <el-result :icon="icon" :title="title" subTitle="">
       <template slot="extra">
         <div class="btn" @click="goComfirm">完成</div>
       </template>
@@ -11,14 +11,27 @@
 export default {
   name: '',
   data() {
-    return {};
+    return {
+      icon: '',
+      title: ''
+    };
   },
-  methods:{
- goComfirm() {
+  created() {
+    console.log('是否成功', this.$route.query.result);
+    if (this.$route.query.result == 0) {
+      this.icon = 'success';
+      this.title = '提交成功';
+    } else {
+      this.icon = 'error';
+      this.title = '提交失败';
+    }
+  },
+  methods: {
+    goComfirm() {
       this.$router.push({
         path: `demo`
       });
-    },
+    }
   },
   mounted() {}
 };
