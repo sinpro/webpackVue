@@ -2,23 +2,12 @@
 	<div class="bank-header">
 		<div class="logo clearfix">
 			<div class="bank-header-logo">
-				logo
+				<img src="../../images/image.png" alt="">
 			</div>
 			<div class="bank-header-search">
-				<el-input v-model="input" placeholder="请输入内容"></el-input>
-				<el-button disabled>安全中心</el-button>
-				<el-button disabled>安全退出</el-button>
-				<el-select v-model="value" placeholder="请选择" @change="sitchLang">
-					<el-option
-					v-for="item in options"
-					:key="item.value"
-					:label="item.label"
-					
-					:value="item.value">
-					</el-option>
-				</el-select>
-				<!-- <button v-for="(item,i) in [{name:'中文',key:'sc'},{name:'繁体',key:'tc'},{name:'英文',key:'en'}]" :key="i" @click="sitchLang(item.key)">{{item.name}}</button> -->
-				<p class="cont">{{$t('person.name')}}--{{$t('person.age')}}</p>
+				<el-input v-model="input" placeholder="请输入关键字进行搜索" suffix-icon="el-icon-search"></el-input>
+				<span class="hover-point">安全中心</span>
+				<span class="hover-point">安全退出</span>
 			</div>
 		</div>
 		<div class="nav">
@@ -36,21 +25,13 @@ export default {
 	data(){
 		return {
 			input:'',
-			options:[{label:'中文',value:'sc'},{label:'繁体',value:'tc'},{label:'英文',value:'en'}],
-			value:window.localStorage.getItem('lang')||'sc'
 		}
 	},
 	mounted(){
 		
 	},
 	methods:{
-		sitchLang(lang){
-			// console.log(lang,111);
-			// return;
-			this.$i18n.locale = lang; // 设置当前语言
-			window.localStorage.setItem('lang', lang);
-			window.localStorage.setItem(this.value, lang);
-		}
+		
 	}
 }	
 </script>

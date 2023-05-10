@@ -11,12 +11,13 @@
         background-color: #fff;
     }
     &-content{
-        background-color: #fff;
+        
         margin-left: 204px;
         height: 100%;
         overflow: auto;
         .cont{
             padding: 12px;
+            background-color: #fff;
         }
     }
 }
