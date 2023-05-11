@@ -1,9 +1,7 @@
 .wrap {
   .step {
     display: flex;
-    justify-content: center;
-    position: relative;
-     left: 6% ;
+    margin-left: 35%;
     /deep/.el-step{  
       // width: 600px !important;
       .el-step__main {

@@ -2,7 +2,7 @@
   <div class="wrap">
     <!-- 步骤条，后续这里要弄成公共组件 -->
     <div class="step">
-      <el-steps :space="200" :active="0" finish-status="success">
+      <el-steps :space="200" :active="0">
         <el-step title="填写信息"></el-step>
         <el-step title="确认信息"></el-step>
         <el-step title="提交结果"></el-step>
@@ -279,10 +279,12 @@ export default {
       if (this.moneyTy == 0) {
         // 卖出
         this.$set(this.formData, 'payeeMoneyNum', this.moneyNum);
+        
       } else {
         // 买入
         this.$set(this.formData, 'payerMoneyNum', this.moneyNum);
-      }
+      
+      } 
     },
     // 卖出买入切换
     changeType(index) {
@@ -391,7 +393,6 @@ export default {
         });
         return true;
       }
-
       if (this.formData.payeeName == '') {
         this.$message({
           message: '卖出账号是必输项,不能为空',
@@ -425,9 +426,9 @@ export default {
       return false;
     },
     goComfirm() {
-      if (this.checkEmpty()) {
-        return;
-      }
+      // if (this.checkEmpty()) {
+      //   return;
+      // }
       //点击下一步跳转确认页
       this.$router.push({
         path: `currencyComfirm`,
