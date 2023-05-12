@@ -1,7 +1,7 @@
  <template>
   <div class="wrap">
      <div class="step">
-      <el-steps :space="200" :active="2" finish-status="success">
+      <el-steps :space="200" :active="2" finish-status="wait">
         <el-step title="填写信息"></el-step>
         <el-step title="确认信息"></el-step>
         <el-step title="提交结果"></el-step>
@@ -15,10 +15,10 @@
           <!-- 头部卖出买入金额展示框 -->
           <div class="moneyTitle">参考编号：{{ formData.copyNum }}</div>
           <div class="moneyTitle">
-            买入金额（瑞士法郎）{{ formData.payerCanUse }}
+            买入金额（{{formData.payerMoneyTyText }}）{{ formData.payerCanUse }}
           </div>
           <div class="moneyTitle">
-            卖出金额（港币）{{ formData.payeeCanUse }}
+            卖出金额（{{formData.payeeMoneyTyText}}）{{ formData.payeeCanUse }}
           </div>
         </div>
         <div class="wrap_info">
@@ -27,7 +27,7 @@
             <el-row>
               <el-col :span="12">
                 <div class="item">
-                  <div class="text">买入账号</div>
+                  <div class="text">卖出账号</div>
                 </div>
               </el-col>
               <el-col :span="12">
@@ -80,7 +80,7 @@
             <el-row>
               <el-col :span="24">
                 <div class="item">
-                  <div class="title">附言</div>
+                  <div class="title">利率</div>
                   <div style="display: flex">
                     <div class="text">
                       {{ formData.payerMoneyTyText }}1=

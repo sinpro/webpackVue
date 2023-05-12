@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="step">
-      <el-steps :space="200" :active="1" finish-status="success">
+      <el-steps :space="200" :active="1" finish-status="wait">
         <el-step title="填写信息"></el-step>
         <el-step title="确认信息"></el-step>
         <el-step title="提交结果"></el-step>
